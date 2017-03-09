@@ -1,7 +1,7 @@
 {
-  "name": "ember-in-the-wild",
+  "name": "ember-todo-app",
   "version": "0.0.0",
-  "description": "Small description for ember-in-the-wild goes here",
+  "description": "Small description for ember-todo-app goes here",
   "license": "MIT",
   "author": "",
   "directories": {

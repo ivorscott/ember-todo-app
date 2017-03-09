@@ -1,1 +1,1 @@
-# ember-in-the-wild
+# ember-todo-app
