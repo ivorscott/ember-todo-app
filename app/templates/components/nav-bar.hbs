@@ -1,0 +1,51 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+        data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" class="navbar-brand">{{appName}}</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar">
+        <li>
+          <a href="#" class="nav-item nav-link">Dashboard</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {{#if session.isAuthenticated}}
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+              aria-haspopup="true" aria-expanded="false">
+              Settings <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Account</a></li>
+              <li role="separator" class="divider"></li>
+              <!-- logout action-->
+              <li><a {{action "invalidateSession"}}>Logout</a></li>
+            </ul>
+          </li>
+        {{else}}
+          <!-- authenticate action-->
+          <form id="login" class="navbar-form" {{action "authenticate" on="submit"}} role="search">
+            <div class="form-group">
+              {{input type="email" class="form-control" placeholder="Enter email" value=email}}
+              {{input type="password" class="form-control" placeholder="Enter password" value=password}}
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        {{/if}}
+      </ul>
+      {{#if session.isAuthenticated }}
+        <form id="search" class="navbar-form">
+          <input type="text" class="form-control" placeholder="Search...">
+        </form>
+      {{/if}}
+    </div>
+  </div>
+</nav>
