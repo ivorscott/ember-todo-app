@@ -20,8 +20,16 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    API: {
+      HOST : 'https://my-node-todo-api.herokuapp.com'
     }
   };
+
+  // Apis and Authentication
+
+  ENV.API_TOKEN_END_POINT = `${ENV.API.HOST}/users/login`;
+  ENV.API_TOKEN_KILL_POINT = `${ENV.API.HOST}/users/me/token`;
 
   ENV['ember-simple-auth'] = {
       authenticationRoute: 'login',

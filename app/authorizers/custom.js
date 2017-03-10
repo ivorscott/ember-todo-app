@@ -2,11 +2,11 @@ import Base from 'ember-simple-auth/authorizers/base';
 import Ember from 'ember';
 
 export default Base.extend({
-  authorize(jqXHR, requestOptions) {
-    console.log(jqXHR);
-    let accessToken = this.get('session.data.authenticated.token');
-     if (this.get('session.isAuthenticated') && !Ember.isEmpty(accessToken)) {
-         jqXHR.setRequestHeader('X-AUTH', accessToken);
-     }
+  session: Ember.inject.service(),
+  authorize(data, callback) {
+    // console.log(callback);
+    if (this.get('session.isAuthenticated') && (data.token.length > 0)) {
+      callback('X-AUTH', data.token);
+    }
   }
 });
