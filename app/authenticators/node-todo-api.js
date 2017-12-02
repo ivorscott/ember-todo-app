@@ -1,5 +1,5 @@
 import Base from 'ember-simple-auth/authenticators/base';
-import Config from '../config/environment';
+import ENV from 'ember-todo-app/config/environment';
 import Ember from 'ember';
 
 export default Base.extend({
@@ -16,7 +16,7 @@ export default Base.extend({
   authenticate(options) {
     return new Ember.RSVP.Promise((resolve, reject) => {
       Ember.$.ajax({
-          url: Config.API_TOKEN_END_POINT,
+          url: ENV.TOKEN_END_POINT,
           type: 'POST',
           data: JSON.stringify({
               email: options.email,
@@ -25,11 +25,16 @@ export default Base.extend({
           contentType: 'application/json;charset=utf-8',
           dataType: 'json'
       }).then(function(response,status,jqXHR) {
-              resolve({
-                  token: jqXHR.getResponseHeader('X-AUTH'),
-                  accountId: response._id,
-                  email: response.email
-              });
+        const {
+          id,
+          attributes
+        } = response.data;
+
+        resolve({
+            token: jqXHR.getResponseHeader('x-auth'),
+            accountId: id,
+            email: attributes.email
+        });
       }, function(xhr, status, error) {
           var response = xhr.responseText;
           reject(response);
@@ -37,7 +42,6 @@ export default Base.extend({
     });
   },
   invalidate(data) {
-    // TODO: (DELETE) with Config.API_TOKEN_KILL_POINT
     return Ember.RSVP.resolve();
   }
 });
