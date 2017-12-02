@@ -4,8 +4,7 @@ import Ember from 'ember';
 
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
-export default DS.RESTAdapter.extend(DataAdapterMixin, {
-  session: Ember.inject.service(),
+export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   namespace: ENV.APP.NAMESPACE,
   authorizer: 'authorizer:custom'
 });

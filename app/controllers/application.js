@@ -14,6 +14,7 @@ export default Ember.Controller.extend({
       });
     },
     signOut() {
+      this.get('store').unloadAll();
       this.get('session').invalidate();
       this.transitionToRoute('login');
     }
