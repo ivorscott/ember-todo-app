@@ -1,0 +1,5 @@
+<ul>
+  {{#each todos as |todo|}}
+    {{todo-item todo=todo update=(route-action 'update')}}
+  {{/each}}
+</ul>

@@ -3,6 +3,22 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model() {
-    return this.get('store').findAll('todo');
+    return this.store.findAll('todo');
+  },
+  setupController(controller, model) {
+    this._super(controller, model);
+    controller.set('todos', model);
+  },
+  actions: {
+    update(todo, method) {
+        switch(method) {
+          case 'edit':
+            todo.set('text', todo.text);
+            todo.save();
+            break;
+          case 'delete':
+            todo.destroyRecord();
+        }
+    }
   }
 });
