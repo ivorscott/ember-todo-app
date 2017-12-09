@@ -1,3 +1,4 @@
 <li>
-  {{todo.text}} <a href="" {{action 'update' 'delete'}}>delete</a>
+    {{input value=(readonly todo.text) action="onEnter"}}
+   <a {{action 'delete'}}>delete</a>
 </li>
