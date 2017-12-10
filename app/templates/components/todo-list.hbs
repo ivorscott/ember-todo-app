@@ -1,4 +1,6 @@
-<ul>
+{{input class="todo-input" value=(readonly text) action="onEnter"}}
+
+<ul class="todo-list">
   {{#each todos as |todo|}}
     {{todo-item todo=todo edit=(route-action 'edit') delete=(route-action 'delete')}}
   {{/each}}

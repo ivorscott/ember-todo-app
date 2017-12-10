@@ -10,6 +10,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     controller.set('todos', model);
   },
   actions: {
+    add(text) {
+      Ember.debug(text);
+      let todo = this.store.createRecord('todo', { text })
+      todo.save()
+    },
     edit(todo) {
       Ember.debug(todo);
       if(todo.get('hasDirtyAttributes')) {

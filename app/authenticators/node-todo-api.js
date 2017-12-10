@@ -19,12 +19,16 @@ export default Base.extend({
           url: ENV.TOKEN_END_POINT,
           type: 'POST',
           data: JSON.stringify({
-              email: options.email,
-              password: options.password
+              "data": {
+                "attributes": {
+                  "email": options.email,
+                  "password": options.password
+                }
+              }
           }),
-          contentType: 'application/json;charset=utf-8',
+          contentType: 'application/vnd.api+json',
           dataType: 'json'
-      }).then(function(response,status,jqXHR) {
+      }).then(function(response, status, jqXHR) {
         const {
           id,
           attributes
@@ -35,13 +39,13 @@ export default Base.extend({
             accountId: id,
             email: attributes.email
         });
-      }, function(xhr, status, error) {
+      }, function(xhr, /* status, error */) {
           var response = xhr.responseText;
           reject(response);
       });
     });
   },
-  invalidate(data) {
+  invalidate(/* data */) {
     return Ember.RSVP.resolve();
   }
 });
