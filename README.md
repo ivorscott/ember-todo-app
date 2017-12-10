@@ -1,13 +1,16 @@
 # ember-todo-app
 
-[ember-todo-app](https://github.com/ivorscott/ember-todo-app) with ember-simple-auth is designed to work with [nodo-todo-api](https://github.com/ivorscott/node-todo-api)
-, a NodeJS Express API that utilizes MongoDB. The API serializes & deserializes jsonapi payloads.
+[ember-todo-app](https://github.com/ivorscott/ember-todo-app) with
+ember-simple-auth is designed to work with
+ [nodo-todo-api](https://github.com/ivorscott/node-todo-api), a
+NodeJS Express API that utilizes MongoDB. The API serializes & deserializes jsonapi payloads.
 
 ## Usage
 
+* `npm install ember-cli -g`
 * `npm i && bower i`
 * `ember s --proxy http://localhost:4000`
-* node-todo-api runs on port :4000 by default
+
 
 ### Configuration
 Nothing is required to be changed if you use both apps together as is.
